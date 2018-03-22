@@ -1,0 +1,86 @@
+/*memblisttits*/
+.memblisttits{}
+.memblisttits span{line-height: 4rem;position: relative;font-size: 1.4rem;display: block;float: left;text-align: center;border-bottom: .1rem solid #ddd;}
+.memblisttits span.checksp{color: #f60;border-bottom: .1rem solid #f60;}
+.memblisttits span.checksp:after{width: 100%;display: block;height: .1rem;content: "";position: absolute;bottom: 0;left: 0;background: #f60;}
+
+.memblismain{}
+.memblismain li{position: relative;padding: 1rem 6rem 1rem 6.6rem;border-bottom: .1rem solid #eee}
+.memblismain li:nth-last-child(1){ border-bottom:0;}
+.memblismain li .userpics{width: 4.6rem;height: 4.6rem;position: absolute;left: 1rem;top: 1rem;}
+.memblismain li .usernams{min-height: 4.6rem;border-right: .1rem solid #ddd;}
+.memblismain li .usernams h4{font-size: 1.6rem;line-height: 2.6rem;font-weight: normal;}
+.memblismain li .usernams h4 i{color: #ff0000;margin-right: .4rem;}
+.memblismain li .usernams p{font-size: 1.2rem;line-height: 2rem;}
+.memblismain li .subodnum{position: absolute;right: 1rem;top:50%;margin: -1.6rem 0 0;line-height: 1.6rem;text-align: center;font-size: 1.2rem;width: 4.6rem}
+
+.warningtips{line-height: 4rem;font-size: 1.2rem;padding: 0 1rem;background: #f1f1f1}
+.warningtips i{font-size: 1.6rem;color: #f50000}
+
+/*mycoupons_main*/
+.mycoupons_main{padding: 0 2rem;}
+.mycoupons{padding:3rem 0rem;background: #f9f9f9;}
+.mycoupons .coupbodymai{background: #23b7e5;border-radius: .8rem;text-align: center;font-size: 1.6rem;color: #fff;position: relative;overflow: hidden;padding: 2rem 0 0;}
+.mycoupons .coupbodymai:after,.mycoupons .coupbodymai:before{background: #f9f9f9;border-radius:50%;width: 4rem;height: 4rem;display: block;content: "";position: absolute;top: 50%;margin-top: -2rem;}
+.mycoupons .coupbodymai:after{left:-2.6rem; }
+.mycoupons .coupbodymai:before{right:-2.6rem; }
+.mycoupons .coupbodymai b{line-height:4rem;font-size:2rem;display:inline-block;background:#fafafa;padding:0 2rem;color:#333}
+.mycoupons .coupbodymai p{line-height:5rem;border-top:.1rem dashed #f9f9f9;margin-top:2rem;}
+
+.coupintrod{background:#fff;border:.1rem solid #eee;padding:1rem;font-size:1.2rem;}
+.coupintrod h3{font-size:1.24rem;line-height:2.4rem;}
+.coupintrod p{line-height:2rem;}
+
+
+/*personal_information*/
+.personal_information{margin:1rem 0 0;}
+.personal_information ul{}
+.personal_information li {padding:0 1rem;background: #fff;font-size: 1.4rem;}
+.personal_information li a{display: block;padding: 1.4rem 0 1.4rem 1rem;color: #221815;}
+.personal_information li:nth-child(2) a{border-bottom: .1rem solid #e5e5e5;border-top: .1rem solid #e5e5e5;}
+.personal_information li a font{line-height: 5rem}
+.personal_information li a .useimgs{width: 5rem; height: 5rem;border-radius: 50%;}
+.personal_information li a span{float: right;color: #888786;}
+.personal_information li a span .icon-xiangyoujiankuohao{margin-left: 1.6rem;}
+.personal_information li p.telphone{text-align: center;color: #f76f1d;font-size: 1.6rem;padding: 1.2rem 0;}
+
+.chagefpm{font-style: normal;color: #4b93db;font-size: 1.4rem;margin-left: 1.4rem;}
+.chagmain{position: fixed;left: 0;top: 0;height: 100%;width: 100%;z-index: 9999;display: none;}
+.chagmain .chnmbg{position: absolute;left: 0;top: 0;content: ""; height: 100%;width: 100%;background: rgba(0,0,0,.7);}
+.chagmain .chnammcont{position: fixed;width: 80%;background: #fff;left: 10%;padding:2rem;border-radius:.4rem;top: 50%;margin-top: -8rem; z-index: 100;}
+.changphonst .chnammcont{margin-top: -12rem;}
+.chagmain .chnammcont .masinput,.chagmain .chnammcont .subminpt{width: 100%;height: 4rem;line-height: 4rem;font-size: 1.4rem;border-radius: .4rem;}
+.chagmain .chnammcont .masinput{border:.1rem solid #ccc;padding: 0 1rem;margin-bottom: 2rem;}
+.chagmain .chnammcont .subminpt{background: #4b93db;border: 0;color: #fff;}
+.chagmain .chnammcont label.error{left: 0;bottom: 0;}
+.chagmain .chnammcont .chusyam{padding-right:9rem;}
+.chagmain .chnammcont .ymbuton{position: absolute;right:-.1rem;border: 0;background: #ccc;height: 4rem;border-top-right-radius: .4rem;border-bottom-right-radius: .4rem;padding: 0 1rem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

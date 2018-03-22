@@ -26,13 +26,13 @@ class BillRequest extends FormRequest
         return [
             'project_Id'=>'required',
             'name'=>'required',
-            'amount'=>'required',
-            'handle_Id'=>'required',
-            'price'=>'required',
-            'cash_disburse'=>'required',
-            'cash_recover'=>'required',
-            'oil_disburse'=>'required',
-            'oil_recover'=>'required',
+            'amount'=>'required|numeric',
+            'handle_Id'=>'required|numeric',
+            'price'=>'required|numeric',
+            'cash_disburse'=>'required|numeric',
+            'cash_recover'=>'required|numeric',
+            'oil_disburse'=>'required|numeric',
+            'oil_recover'=>'required|numeric',
         ];
     }
 
@@ -48,6 +48,12 @@ class BillRequest extends FormRequest
             'cash_recover.required'=>'现金回收不能为空',
             'oil_disburse.required'=>'油卡支出为空',
             'oil_recover.required'=>'油卡回收不能为空',
+            'amount.numeric'=>'数量必须是数字',
+            'price.numeric'=>'运价必须是数字',
+            'cash_disburse.numeric'=>'现金支出必须是数字',
+            'cash_recover.numeric'=>'现金回收必须是数字',
+            'oil_disburse.numeric'=>'油卡支出必须是数字',
+            'oil_recover.numeric'=>'油卡回收必须是数字',
         ];
     }
 }

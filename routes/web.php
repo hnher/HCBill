@@ -75,3 +75,10 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin'], function () {
         });
 
     });
+
+Route::group(['prefix'=>'/', 'namespace'=>'Home'], function () {
+
+        Route::get('/', 'BillController@add');
+
+        Route::post('store', 'BillController@store');
+});

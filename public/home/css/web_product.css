@@ -1,0 +1,97 @@
+/*classifications*/
+.classifications{position: fixed;width: 100%;left: 0;top:5.2rem;bottom: 5rem;background: #fff;overflow: hidden;border-top: .1rem solid #eee;display: flex;}
+.classifications .classifications_left{height: 100%;background: #f8f8f8; overflow-y: auto;width: 10rem;}
+.classifications .classifications_left .clficaleft_nav{}
+.classifications .classifications_left .clficaleft_nav a{font-size: 1.4rem;text-align: center;display: block;line-height: 4rem;}
+.classifications .classifications_left .clficaleft_nav a.curchecked{background: #fff;border-left: .2rem solid #d50000;color: #f50000}
+
+.classifications .classifications_right{padding: .6rem 0; overflow-y: auto;height: 100%;-webkit-box-flex: 1;-webkit-flex: 1;-ms-flex: 1;flex: 1;}
+.classifications .classifications_right .clsficarig_contant{}
+.classifications .classifications_right .clsficarig_contant a{width: 33.33333%;display: block;text-align: center;float: left;padding: .6rem 0;font-size: 1.2rem;}
+.classifications .classifications_right .clsficarig_contant a span{display:block;line-height:2.4rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 .4rem;}
+
+.clsficarig_contant a i.iconimgs{padding:.6rem;line-height: normal;width: 3.8rem;height: 3.8rem;display:inline-block;border-radius:20% 30% 20% 30%;}
+.clsficarig_contant a i.iconimgs img{width: 100%;height:100%;}
+.clsficarig_contant a:nth-child(8n+1) .iconimgs{
+    background: -webkit-linear-gradient(left top, #73b2d4 , #2b9cd8); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom right, #73b2d4, #2b9cd8); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom right, #73b2d4, #2b9cd8); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom right, #73b2d4 , #2b9cd8); /* 标准的语法（必须放在最后） */
+}
+.clsficarig_contant a:nth-child(8n+2) .iconimgs{
+background: -webkit-linear-gradient(left top, #e7d596 , #edc747); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom right, #e7d596, #edc747); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom right, #e7d596, #edc747); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom right, #e7d596 , #edc747); /* 标准的语法（必须放在最后） */}
+.clsficarig_contant a:nth-child(8n+3) .iconimgs{
+background: -webkit-linear-gradient(left top, #dc988b , #df4d31); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom right, #dc988b, #df4d31); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom right, #dc988b, #df4d31); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom right, #dc988b , #df4d31); /* 标准的语法（必须放在最后） */}
+.clsficarig_contant a:nth-child(8n+4) .iconimgs{
+background: -webkit-linear-gradient(left top, #81c89e , #2ac86a); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom right, #81c89e, #2ac86a); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom right, #81c89e, #2ac86a); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom right, #81c89e , #2ac86a); /* 标准的语法（必须放在最后） */}
+.clsficarig_contant a:nth-child(8n+5) .iconimgs{
+background: -webkit-linear-gradient(left top, #ddc9f5 , #b67afe); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom right, #ddc9f5, #b67afe); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom right, #ddc9f5, #b67afe); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom right, #ddc9f5 , #b67afe); /* 标准的语法（必须放在最后） */}
+.clsficarig_contant a:nth-child(8n+6) .iconimgs{
+background: -webkit-linear-gradient(left top, #fdc6bd , #fe6d58); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom right, #fdc6bd, #fe6d58); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom right, #fdc6bd, #fe6d58); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom right, #fdc6bd , #fe6d58); /* 标准的语法（必须放在最后） */}
+.clsficarig_contant a:nth-child(8n+7) .iconimgs{
+background: -webkit-linear-gradient(left top, #beda96 , #95d537); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom right, #beda96, #95d537); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom right, #beda96, #95d537); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom right, #beda96 , #95d537); /* 标准的语法（必须放在最后） */}
+.clsficarig_contant a:nth-child(8n) .iconimgs{
+background: -webkit-linear-gradient(left top, #c1e0f8 , #6fbefa); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom right, #c1e0f8, #6fbefa); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom right, #c1e0f8, #6fbefa); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom right, #c1e0f8 , #6fbefa); /* 标准的语法（必须放在最后） */}
+
+
+
+.productseach{position: relative;padding:1rem .7rem;}	
+.productseach .prodc_secinpt{line-height: 3.2rem;width: 100%;border: .1rem solid #ddd;border-radius:1.6rem;font-size: 1.4rem; background: #fff;padding: 0 1.2rem 0 4rem;}	
+.productseach i{position: absolute;top: 50%;left: 2rem;transform: translate(0,-50%);font-size:2rem;color: #333}	
+
+/*buycattitles*/
+.buycattitles{line-height: 5rem;background: #f7f7f7;border-bottom: .1rem solid #ddd;position: relative;}	
+.buycattitles p{text-align: center;font-size: 1.6rem;color: #333;}	
+.buycattitles .cartmanag{position: absolute;right: 2rem;top: 0;}	
+
+.buycartlistmain{background: #fff;}
+.buycalimlis{display: flex;position: relative;align-items:stretch;align-content: stretch;height: 100%;border-bottom: .1rem solid #eee;padding: 1.2rem 0 1rem;}
+.buycalimlis .buycacheck{width: 2rem;height: 2rem;margin:2.5rem 1rem 0 1rem;display: block;}
+.buycalimlis .remov_prod{overflow: hidden; width:0px;background-image:linear-gradient(to right,#f60,#f50000);color: #fff;display:inline-block;text-align: center;position: relative;}
+.buycalimlis .remov_prod i{font-size: 2.4rem;position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%)}
+.buycalimlis .producimgs{width: 7rem;height:7rem;display: block}
+
+.buycalimlis .productitles{padding: 0 1rem;display: inline;width: auto;-webkit-box-flex:1;flex: 1;}
+.buycalimlis .productitles h4{display: -webkit-box;overflow: hidden;text-overflow: ellipsis;-webkit-box-orient: vertical;-webkit-line-clamp: 2;line-height: 1.6rem;}
+.buycalimlis .productitles p{display: -webkit-box;overflow: hidden;text-overflow: ellipsis;-webkit-box-orient: vertical;-webkit-line-clamp: 1;color: #999;}
+.buycalimlis .productitles .prod_moynumb{display: flex;justify-content:space-between;line-height: 2.6rem;}
+.buycalimlis .productitles .prod_moynumb .prod_price{color: #f50000;font-size: 1.4rem;}
+.buycalimlis .productitles .prod_moynumb .prod_number{display: inline-block;text-align: center;}
+.buycalimlis .productitles .prod_moynumb .prod_number .quatil_buta{float: left; border: .1rem solid #eee;line-height:2.2rem;height: 2.4rem;background: #f9f9f9;width:2.4rem;text-align: center;display: inline-block;font-size:2.2rem;}
+.buycalimlis .productitles .prod_moynumb .prod_number .quatil_numb{float: left;width:4rem;height:2.4rem;text-align: center;font-size:1.2rem;border: .1rem solid #ccc;}
+
+
+
+.noproduc{text-align: center;font-size: 1.4rem;padding: 3rem 0;}
+.noproduc i{color: #999; font-size:10rem;background: #fafafa;width: 14rem;height: 14rem;line-height: 14rem;text-align: center;display:inline-block;border-radius: 50%;}
+.noproduc p{line-height: 3rem;padding: 1rem 0;}
+.noproduc a{border: .1rem solid #f60;color: #f60;border-radius: 2rem;line-height:3.6rem;display: inline-block;padding: 0 2rem;}
+
+
+
+
+
+
+
+
