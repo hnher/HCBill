@@ -17,48 +17,61 @@ Route::get('/', function () {
 
 Route::group(['prefix'=>'admin', 'namespace'=>'Admin'], function () {
 
-        Route::get('/', 'IndexController@index');
+        Route::group(['prefix'=>'login'], function () {
 
-        Route::group(['prefix'=>'bill'], function() {
+            Route::get('/', 'LoginController@index');
 
-            Route::get('/', 'BillController@index');
+            Route::post('login', 'LoginController@login');
 
-            Route::get('add', 'BillController@add');
-
-            Route::post('store', 'BillController@store');
-
-            Route::get('edit/{id}', 'BillController@edit');
-
-            Route::get('delete/{id}', 'BillController@delete');
-
-            Route::get('export', 'BillController@export');
-
+            Route::get('logout', 'LoginController@logout');
         });
 
-        Route::group(['prefix'=>'project'], function () {
+        Route::group(['middleware'=>['login']], function () {
 
-            Route::get('/', 'ProjectController@index');
+            Route::get('/', 'IndexController@index');
 
-            Route::get('add', 'ProjectController@add');
+            Route::group(['prefix'=>'bill'], function() {
 
-            Route::post('store', 'ProjectController@store');
+                Route::get('/', 'BillController@index');
 
-            Route::get('edit/{id}', 'ProjectController@edit');
+                Route::get('add', 'BillController@add');
 
-            Route::get('delete/{id}', 'ProjectController@delete');
-        });
+                Route::post('store', 'BillController@store');
 
-        Route::group(['prefix'=>'handle'], function () {
+                Route::get('edit/{id}', 'BillController@edit');
 
-            Route::get('add', 'HandleController@add');
+                Route::get('delete/{id}', 'BillController@delete');
 
-            Route::get('/', 'HandleController@index');
+                Route::get('export', 'BillController@export');
 
-            Route::get('edit/{id}', 'HandleController@edit');
+            });
 
-            Route::post('store', 'HandleController@store');
+            Route::group(['prefix'=>'project'], function () {
 
-            Route::get('delete/{id}', 'HandleController@delete');
+                Route::get('/', 'ProjectController@index');
+
+                Route::get('add', 'ProjectController@add');
+
+                Route::post('store', 'ProjectController@store');
+
+                Route::get('edit/{id}', 'ProjectController@edit');
+
+                Route::get('delete/{id}', 'ProjectController@delete');
+            });
+
+            Route::group(['prefix'=>'handle'], function () {
+
+                Route::get('add', 'HandleController@add');
+
+                Route::get('/', 'HandleController@index');
+
+                Route::get('edit/{id}', 'HandleController@edit');
+
+                Route::post('store', 'HandleController@store');
+
+                Route::get('delete/{id}', 'HandleController@delete');
+            });
+
         });
 
     });

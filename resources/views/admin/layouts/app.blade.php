@@ -53,7 +53,7 @@
                     </li>
                 </ul>
 
-                <a href="index.html" class="brand">
+                <a href="" class="brand">
                     <i class="fa fa-home"></i><span class="brand-name">管理后台</span>
                 </a>
             </div>
@@ -70,7 +70,7 @@
                         <a href="index.html" id="userToggle" data-toggle="dropdown">
                             <img src="/images/profile/profile9.jpg" alt="" class="img-circle inline-block user-profile-pic">
                             <div class="user-detail inline-block">
-                                admin
+                                <a href="{{ url('admin/login/logout') }}">退出</a>
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>

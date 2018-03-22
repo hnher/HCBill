@@ -49,7 +49,6 @@ class ProjectController extends AdminController
 
     public function delete($id)
     {
-
         $project = Project::where('id', $id)->first();
 
         if (count($project->debit)) {

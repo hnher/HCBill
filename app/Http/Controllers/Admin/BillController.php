@@ -20,6 +20,7 @@ class BillController extends AdminController
      */
     public function index(Debit $debit, Request $request)
     {
+
         $query = $debit->query();
 
         if ($request->Keywordj) {
@@ -35,6 +36,25 @@ class BillController extends AdminController
             $query->whereBetween('created_at', [strtotime($request->start),strtotime($request->end)]);
         }
 
+        if ($request->keyword) {
+
+            $query->orWhereHas('project', function ($query) use ($request){
+
+                $query->Where('project_name', 'like', '%' . $request->keyword . '%');
+
+            });
+
+            $query->orWhereHas('handle', function ($query) use ($request){
+
+                $query->Where('handle_name', 'like', '%' . $request->keyword . '%');
+
+            });
+
+            $query->orWhere('name', 'like', '%' . $request->keyword . '%');
+
+            $query->orWhere('note', 'like', '%' . $request->keyword . '%');
+        }
+
         if ($request->Excel) {
 
             $debut = $query->pluck('id')->toArray();
@@ -45,6 +65,7 @@ class BillController extends AdminController
         }
 
         $debits = $query->with('project', 'handle')->paginate(10);
+
 
         $handles = (new Handle())->get();
 

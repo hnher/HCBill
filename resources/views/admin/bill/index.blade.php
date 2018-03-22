@@ -24,24 +24,27 @@
                 <!--搜索-->
                   <div class="breadcrumb ccsearch">
 					  <form action="{{ url('admin/bill') }}" method="get">
-						  <input type="text" name="start" id="from01" class="form-control ccdates" placeholder="起始时间"> -
-						  <input type="text" name="end" id="to01" class="form-control ccdates" placeholder="截止时间">
-						  经手人： <select class="form-control ccdates" name="Keywordj">
-							  <option ></option>
+
+						  <input type="text" class="form-control ccdates" name="keyword" placeholder="项目名/品名/经手人/备注/关键词查询">
+
+						  <select class="form-control ccdates" name="Keywordj">
+							  <option value="0" >全部经手人</option>
 							  @foreach($handles as $handle)
-								  <option value="{{ $handle->id }}" @if($handle->id == $handle->id) selected @endif >{{ $handle->handle_name }}</option>
+								  <option value="{{ $handle->id }}"  >{{ $handle->handle_name }}</option>
 								  @endforeach
 						          </select>
 
 
 
-						  项目名： <select class="form-control ccdates" name="Keywordx">
-							  		<option ></option>
+						  <select class="form-control ccdates" name="Keywordx">
+							  		<option value="0">全部项目</option>
 							  @foreach($projects as $project)
-							  		<option value="{{ $project->id }}" @if($project->id == $project->id) selected @endif>{{ $project->project_name }}</option>
+							  		<option value="{{ $project->id }}" >{{ $project->project_name }}</option>
 							  @endforeach
 						  		  </select>
 
+						  <input type="text" name="start" id="from01" class="form-control ccdates" placeholder="起始时间"> -
+						  <input type="text" name="end" id="to01" class="form-control ccdates" placeholder="截止时间">
                         <input type="submit" class="btn btn-success btn-sm" value="搜索">
 						  <input  type="submit" id="fund-a" class="btn btn-success btn-sm label-danger" name="Excel" value="生成报价单">
 						  {{--<a class="label label-danger" href="{{ url('admin/bill/export') }}"></a>--}}
