@@ -5,6 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>账单添加</title>
+	<link rel="stylesheet" href="/home/css/exchange.css">
 	<script  src="/js/jquery-1.11.1.min.js"></script>
 	<script  src="/js/layer/layer.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/demo.css">
@@ -104,9 +105,12 @@ label{
 					<label for="name2">备注:</label>
 					<input type="text" name="note" value="{{ old('note') }}" id="cash_recover" class="field-input">
 				</div>
-				<tr>
-					<td colspan="2" align="center"><input type="submit" class="adbak goback" value="添加"></td>
-				</tr>
+				<div class="change_box" href="">
+					<div class="chang_button">
+						<input type="submit" value="添加">
+						{{--<a href="go_exchange.html">兑换</a>--}}
+					</div>
+				</div>
 		</form>
 	</div>
 </div>

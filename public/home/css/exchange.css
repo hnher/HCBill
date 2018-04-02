@@ -1,0 +1,22 @@
+
+
+html{font-size:62.5%;}
+body {background:#f0f0f0;color: #666; font-family:"Microsoft YaHei"; width:100%;position: absolute;}
+html, body, div, span, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, address, big, cite, code, del, em, font, img, ins, small, strong, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend {margin: 0;padding: 0;}
+span,a{display: inline-block;}
+a{text-decoration: none;}
+*{padding:0;margin:0;}
+ol, ul,li{list-style: none outside none;}
+.change_box .exchange{width: 100%;margin-top: 4rem;}
+.change_box .iphone_detile{border-bottom:5px solid #f6f6f6;display: flex;justify-content: space-between;padding: 0.5rem 1rem;}
+.change_box .iphone_detile div:nth-child(1){border-right:2px solid  #f6f6f6;flex: 2;}
+.change_box .iphone_detile .name h5{font-size: 1.4rem;font-weight: normal;}
+.change_box .iphone_detile .name s,.change_box .iphone_detile .num span{font-size: 1rem;}
+.change_box .iphone_detile .num{flex: 1;text-align: center;}
+.change_box .iphone_detile .num b{color:#E43A3D;font-size: 1.4rem;}
+/*详情介绍*/
+.introduce{padding:0.5rem 0.5rem 0 0.5rem;}
+.introduce p:nth-child(1){color: #E43A3D;font-size: 1.4rem;border-left: 3px solid #E43A3D;padding-left: 0.5rem;}
+.introduce p{color: #666;font-size: 1.4rem;padding: 0.3rem 0;}
+.change_box .chang_button{text-align: center;padding: 1rem 2rem;}
+.change_box .chang_button input{font-size: 1.4rem;color:white;padding:0.3rem 0;background: #E43A3D;width: 100%;border-radius: 5px;}
