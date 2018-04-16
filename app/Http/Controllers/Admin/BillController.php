@@ -129,7 +129,7 @@ class BillController extends AdminController
             $debit = $debit->findOrFail($request->id);
         }
 
-        $actual_disburse = $request->cash_disburse + $request->oil_disburse - $request->cash_recover - $request->oil_recover;
+        $actual_disburse = $request->cash_disburse + $request->oil_disburse - $request->cash_recover - $request->oil_recover;//实际开支
 
         $debit->project_id = $request->project_Id;
 

@@ -9,6 +9,7 @@
 
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+    <link href="/css/ccadd.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="/css/font-awesome.min.css" rel="stylesheet">
 
@@ -21,6 +22,21 @@
     <script src="/js/jquery-2.1.3.min.js"></script>
 
     <script src="/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Morris -->
+    <link href="/css/morris.css" rel="stylesheet"/>
+
+    <!-- Datepicker -->
+    <link href="/css/datepicker.css" rel="stylesheet"/>
+
+    <!-- Animate -->
+    <link href="/css/animate.min.css" rel="stylesheet">
+
+    <!-- Simplify -->
+    <link href="/css/indexoptim.css" rel="stylesheet">
+
+    <!-- echarts.min -->
+    <script src="/js/echarts.min.js"></script>
 
     @yield('css')
 
@@ -56,8 +72,7 @@
                         </ul>
                     </li>
                 </ul>
-
-                <a href="" class="brand">
+                <a href="{{ url('admin/bill') }}" class="brand">
                     <i class="fa fa-home"></i><span class="brand-name">管理后台</span>
                 </a>
             </div>
@@ -74,7 +89,7 @@
                         <a href="index.html" id="userToggle" data-toggle="dropdown">
                             <img src="/images/profile/profile9.jpg" alt="" class="img-circle inline-block user-profile-pic">
                             <div class="user-detail inline-block">
-                                <a href="{{ url('admin/login/logout') }}">退出</a>
+                                {{ Auth::user()->name }}
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
@@ -82,12 +97,12 @@
                             <div class="panel-body paddingTB-sm">
                                 <ul>
                                     <li>
-                                        <a href="Changepassword.html">
+                                        <a href="{{ url('admin/user/edit') }}">
                                             <i class="fa fa-inbox fa-lg"></i><span class="m-left-xs">修改密码</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="login.html">
+                                        <a href="{{ url('admin/login/logout') }}">
                                             <i class="fa fa-power-off fa-lg"></i><span class="m-left-xs">退出</span>
                                         </a>
                                     </li>
@@ -104,17 +119,6 @@
             <!--左侧nav begin-->
             <div class="main-menu">
                 <ul class="accordion">
-                    <li class="bg-palette1">
-                        <a href="index.html">
-                            <span class="menu-content block">
-                                <span class="menu-icon"><i class="block fa fa-home fa-lg"></i></span>
-                                <span class="text m-left-sm">首页</span>
-                            </span>
-                            <span class="menu-content-hover block">
-                                首页
-                            </span>
-                        </a>
-                    </li>
 
                     <li class="openable bg-palette3">
                         <a href="#">
@@ -180,21 +184,16 @@
 
 {{--添加删除成功弹出框结尾--}}
     <!--内容部分-->
-    <footer class="footer">
-				<span class="footer-brand">
-					<strong class="text-danger">商城</strong>
-				</span>
-        <p class="no-margin">
-            &copy; 2016 <strong>商城</strong>. 版权所有.
-        </p>
-    </footer>
+
 </div><!-- /wrapper -->
 
 <a href="javascript:void(0);" class="scroll-to-top hidden-print"><i class="fa fa-chevron-up fa-lg"></i></a>
 
-<!-- Le javascript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
+<script src='/js/modernizr.min.js'></script>
+
+<script src="/js/simplify/simplify.js"></script>
+
+<script src='/js/jquery.slimscroll.min.js'></script>
 
 <script  src="/js/layer/layer.js"></script>
 {{--添加删除成功弹出框--}}

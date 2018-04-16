@@ -1,21 +1,6 @@
 @extends('admin.layouts.app')
 @section('title','项目名')
-@section('css')
-	    <!-- Bootstrap core CSS -->
-	    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		
-		<!-- Font Awesome -->
-		<link href="/css/font-awesome.min.css" rel="stylesheet">
 
-		<!-- ionicons -->
-		<link href="/css/ionicons.min.css" rel="stylesheet">
-		
-		<!-- Simplify -->
-		<link href="/css/simplify.min.css" rel="stylesheet">
-	
-		<!-- cccss -->
-		<link href="/css/ccadd.min.css" rel="stylesheet">
-@endsection
 @section('centent')
 
 		<!--内容部分-->
@@ -63,25 +48,4 @@
 				</div><!-- ./padding-md -->
 			</div><!-- /main-container -->
 		<!--内容部分-->
-@endsection
-@section('js')
-		<a href="#" class="scroll-to-top hidden-print"><i class="fa fa-chevron-up fa-lg"></i></a>
-
-	    <!-- Le javascript
-	    ================================================== -->
-	    <!-- Placed at the end of the document so the pages load faster -->
-		
-		<!-- Jquery -->
-		<script src="/js/jquery-1.11.1.min.js"></script>
-		
-		<!-- Bootstrap -->
-	    <script src="/bootstrap/js/bootstrap.min.js"></script>
-		
-		
-		<!-- Slimscroll -->
-		<script src='/js/jquery.slimscroll.min.js'></script>
-
-		
-		<!-- Simplify -->
-		<script src="/js/simplify/simplify.js"></script>
 @endsection

@@ -9,7 +9,7 @@ class LoginController extends AdminController
 {
     use AuthenticatesUsers;
 
-    protected $redirectTo = '/admin';
+    protected $redirectTo = '/admin/bill';
 
     public function index()
     {

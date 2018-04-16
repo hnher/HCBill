@@ -1,30 +1,12 @@
 @extends('admin.layouts.app')
 @section('title','出账')
 @section('css')
-		<!-- cccss -->
-		<link href="/css/ccadd.min.css" rel="stylesheet">
-
-		{{--时间--}}
+	{{--时间--}}
 		<script type="text/javascript" src="/js/jquery.ui.core.js"></script>
 		<script type="text/javascript" src="/js/jquery.ui.datepicker.js"></script>
 		<script type="text/javascript" src="/js/datechoice.js"></script>
 		<link href="/css/jquery.ui.datepicker.css" rel="stylesheet" />
 		{{--时间--}}
-
-		<!-- Morris -->
-		<link href="/css/morris.css" rel="stylesheet"/>
-
-		<!-- Datepicker -->
-		<link href="/css/datepicker.css" rel="stylesheet"/>
-
-		<!-- Animate -->
-		<link href="/css/animate.min.css" rel="stylesheet">
-
-		<!-- Simplify -->
-		<link href="/css/indexoptim.css" rel="stylesheet">
-
-		<!-- echarts.min -->
-		<script src="/js/echarts.min.js"></script>
 
 @endsection
 @section('centent')
@@ -119,7 +101,7 @@
                   <div class="breadcrumb ccsearch">
 					  <form action="{{ url('admin/bill') }}" method="get">
 
-						  <input type="text" class="form-control ccdates" value="@if(isset($_GET['keyword'])){{ $_GET['keyword'] }} @endif" name="keyword" placeholder="项目名/品名/经手人/备注/关键词查询">
+						  <input type="text" class="form-control ccdates" value="@if(isset($_GET['keyword'])){{ $_GET['keyword'] }}@endif" name="keyword" placeholder="项目名/品名/经手人/备注/关键词查询">
 
 						  <select class="form-control ccdates" name="Keywordj">
 							  <option value="0" >全部经手人</option>
@@ -136,9 +118,9 @@
 							  @endforeach
 						  		  </select>
 
-						  <input type="text" name="start" id="from01" value="@if(isset($_GET['start'])){{ $_GET['start'] }} @endif" class="form-control ccdates" placeholder="起始时间"> -
-						  <input type="text" name="end" id="to01" value="@if(isset($_GET['end'])){{ $_GET['end'] }} @endif" class="form-control ccdates" placeholder="截止时间">
-                        <input type="submit" class="btn btn-success btn-sm" value="搜索">
+						  <input type="text" name="start" id="from01" value="@if(isset($_GET['start'])){{ $_GET['start'] }}@endif" class="form-control ccdates" placeholder="起始时间"> -
+						  <input type="text" name="end" id="to01" value="@if(isset($_GET['end'])){{ $_GET['end'] }}@endif" class="form-control ccdates" placeholder="截止时间">
+                        	<input type="submit" class="btn btn-success btn-sm" value="搜索">
 						  <input  type="submit" id="fund-a" class="btn btn-success btn-sm label-danger" name="Excel" value="生成报价单">
 						  {{--<a class="label label-danger" href="{{ url('admin/bill/export') }}"></a>--}}
 					  </form>
@@ -173,8 +155,8 @@
 								<td class="text-info">{{ $debit->handle->handle_name }}</td>
 								<td>{{ $debit->price }}</td>
 								<td>{{ $debit->cash_disburse }}</td>
-								<td>{{ $debit->oil_disburse }}</td>
 								<td>{{ $debit->cash_recover }}</td>
+								<td>{{ $debit->oil_disburse }}</td>
 								<td>{{ $debit->oil_recover }}</td>
 								<td>{{ $debit->actual_disburse }}</td>
 								<td>{{ $debit->remaining }}</td>
@@ -227,14 +209,8 @@
 		<!--内容部分-->
 @endsection
 @section('js')
-		<a href="#" class="scroll-to-top hidden-print"><i class="fa fa-chevron-up fa-lg"></i></a>
 
 
-		<script src='/js/modernizr.min.js'></script>
-
-		<script src="/js/simplify/simplify.js"></script>
-
-		<script src='/js/jquery.slimscroll.min.js'></script>
 
 		<script src='/js/jquery.popupoverlay.min.js'></script>
 

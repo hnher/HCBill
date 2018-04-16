@@ -71,6 +71,12 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin'], function () {
                 Route::get('delete/{id}', 'HandleController@delete');
             });
 
+            Route::group(['prefix'=>'user'], function () {
+
+                Route::get('edit', 'UserController@edit');
+
+                Route::post('update', 'UserController@update');
+            });
         });
 
     });

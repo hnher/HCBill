@@ -1,21 +1,10 @@
 @extends('admin.layouts.app')
 @section('title','添加')
 @section('css')
-    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="/css/font-awesome.min.css" rel="stylesheet">
-    <!-- ionicons -->
-    <link href="/css/ionicons.min.css" rel="stylesheet">
-    <script src="bootstrap//css/bootstrapValidator.css"></script>
-    <!-- fileinput -->
+
     <script src="/bootstrap/css/fileinput.css"></script>
     <script src="/bootstrap/css/default.css"></script>
-    <!-- Simplify -->
-    <link href="/css/simplify.min.css" rel="stylesheet">
-    <!-- ccadd -->
-    <link href="/css/ccadd.min.css" rel="stylesheet">
-    <!-- Jquery -->
-    <script src="/js/jquery-1.11.1.min.js"></script>
+
 @endsection
 @section('centent')
 
@@ -88,13 +77,13 @@
                                 </div><!-- /.col -->
                             </div><!-- /form-group -->
                             <div class="form-group">
-                                <label class="control-label col-lg-2">油卡支出：</label>
+                                <label class="control-label col-lg-2">现金回收：</label>
                                 <div class="col-lg-3">
                                     <input type="text" class="form-control input-sm" value="{{ old('cash_recover',$debit->cash_recover) }}" name="cash_recover" >
                                 </div><!-- /.col -->
                             </div><!-- /form-group -->
                             <div class="form-group">
-                                <label class="control-label col-lg-2">现金回收：</label>
+                                <label class="control-label col-lg-2">油卡支出：</label>
                                 <div class="col-lg-3">
                                     <input type="text" class="form-control input-sm" value="{{ old('oil_disburse',$debit->oil_disburse) }}" name="oil_disburse" >
                                 </div><!-- /.col -->
@@ -126,22 +115,11 @@
 
 @section('js')
 
-<a href="#" class="scroll-to-top hidden-print"><i class="fa fa-chevron-up fa-lg"></i></a>
-<!-- Le javascript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<!-- Bootstrap -->
-<script src="/bootstrap/js/bootstrap.min.js"></script>
-<!-- Slimscroll -->
-<script src='/js/jquery.slimscroll.min.js'></script>
-<!-- Modernizr -->
-<script src='/js/modernizr.min.js'></script>
-<!-- Simplify -->
-<script src="/js/simplify/simplify.js"></script>
 <script src="/bootstrap/js/fileinput.js"></script>
 <script src="/bootstrap/js/fileinput_locale_zh.js"></script>
 <!-- bootstrapValidator -->
 <script src="/bootstrap/js/bootstrapValidator.js"></script>
+
 
 <script>
     $("#file-3").fileinput({
