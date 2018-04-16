@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Exports\DebitsExport;
+use App\Helpers\Count;
 use App\Http\Requests\BillRequest;
 use App\Model\Debit;
 use App\Model\Handle;
@@ -20,7 +21,6 @@ class BillController extends AdminController
      */
     public function index(Debit $debit, Request $request)
     {
-
         $query = $debit->query();
 
         if ($request->Keywordj) {
@@ -66,12 +66,36 @@ class BillController extends AdminController
 
         $debits = $query->with('project', 'handle')->paginate(10);
 
-
         $handles = (new Handle())->get();
 
         $projects = (new Project())->get();
 
-        return view('admin.bill.index', ['debits'=>$debits, 'handles'=>$handles, 'projects'=>$projects]);
+        //以下是统计
+        $countProject = (new Project())->get()->count();//项目统计
+
+        $countHandles = (new Handle())->get()->count();//品名统计
+
+        $counts = new Debit();
+
+        $countDisburses = $counts->pluck('cash_disburse')->sum();//现金支出总金额统计
+
+        $countRecover = $counts->pluck('cash_recover')->sum();//现金回收总金额统计
+
+        $oil_disburse = $counts->pluck('oil_disburse')->sum();//油卡支出总金额
+
+        $oil_recover = $counts->pluck('oil_recover')->sum();//油卡支出总金额
+
+        return view('admin.bill.index', [
+            'debits'=>$debits,
+            'handles'=>$handles,
+            'projects'=>$projects,
+            'countProject'=>$countProject,
+            'countHandles'=>$countHandles,
+            'countDisburses'=>$countDisburses,
+            'countRecover'=>$countRecover,
+            'oil_disburse'=>$oil_disburse,
+            'oil_recover'=>$oil_recover,
+        ]);
     }
 
 

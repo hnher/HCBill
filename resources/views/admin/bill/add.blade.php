@@ -23,7 +23,7 @@
     <div class="main-container">
         <div class="padding-md">
             <!--当前位置 begin-->
-            <h3 class="header-text">统计信息
+            <h3 class="header-text">添加账单
                 <span class="hed_te_span"><a href="{{ url('admin/bill') }}">管理</a></span></h3>
             <!--当前位置 end-->
             @if (count($errors) > 0)

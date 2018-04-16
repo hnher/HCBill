@@ -43,7 +43,6 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin'], function () {
                 Route::get('delete/{id}', 'BillController@delete');
 
                 Route::get('export', 'BillController@export');
-
             });
 
             Route::group(['prefix'=>'project'], function () {
