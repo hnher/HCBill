@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/**
+ * 后台
+ */
 Route::group(['prefix'=>'admin', 'namespace'=>'Admin'], function () {
 
         Route::group(['prefix'=>'login'], function () {
@@ -28,7 +31,7 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin'], function () {
 
         Route::group(['middleware'=>['login']], function () {
 
-            Route::get('/', 'IndexController@index');
+            Route::get('/', 'BillController@index');
 
             Route::group(['prefix'=>'bill'], function() {
 
@@ -81,6 +84,9 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin'], function () {
 
     });
 
+/**
+ * 前台
+ */
 Route::group(['prefix'=>'/', 'namespace'=>'Home'], function () {
 
         Route::get('/', 'BillController@add');

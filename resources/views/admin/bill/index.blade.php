@@ -29,8 +29,8 @@
 									<div class="col-lg-2 col-sm-6 paddingLR-sm">
 										<div class="statistic-box bg-dark m-bottom-md">
 											<div class="statistic_text">
-												<p><strong>{{ $countProject }}</strong>个</p>
-												<p>项目名</p>
+												<p><strong>{{ $count['countProject'] }}</strong>个</p>
+												<p>项&nbsp;&nbsp;&nbsp;目</p>
 											</div>
 											<div class="datastatistics">
 												<i class="fa fa-eye"></i>
@@ -40,8 +40,8 @@
 									<div class="col-lg-2 col-sm-6 paddingLR-sm">
 										<div class="statistic-box bg-danger m-bottom-md">
 											<div class="statistic_text">
-												<p><strong>{{ $countHandles }}</strong>个</p>
-												<p>品名</p>
+												<p><strong>{{ $count['countHandles'] }}</strong>个</p>
+												<p>经手人</p>
 											</div>
 											<div class="datastatistics">
 												<i class="fa fa-eye"></i>
@@ -51,7 +51,7 @@
 									<div class="col-lg-2 col-sm-6 paddingLR-sm">
 										<div class="statistic-box bg-success m-bottom-md">
 											<div class="statistic_text">
-												<p><strong>{{ $countDisburses }}</strong>元</p>
+												<p><strong>{{ $count['countDisburses'] }}</strong>元</p>
 												<p>现金支出总金额</p>
 											</div>
 											<div class="datastatistics">
@@ -62,7 +62,7 @@
 									<div class="col-lg-2 col-sm-6 paddingLR-sm">
 										<div class="statistic-box bg-info m-bottom-md">
 											<div class="statistic_text">
-												<p><strong>{{ $countRecover }}</strong>元</p>
+												<p><strong>{{ $count['countRecover'] }}</strong>元</p>
 												<p>现金回收总金额</p>
 											</div>
 											<div class="datastatistics">
@@ -73,7 +73,7 @@
 									<div class="col-lg-2 col-sm-6 paddingLR-sm">
 										<div class="statistic-box bg-warning m-bottom-md">
 											<div class="statistic_text">
-												<p><strong>{{ $oil_disburse }}</strong>元</p>
+												<p><strong>{{ $count['oil_disburse'] }}</strong>元</p>
 												<p>油卡支出总金额</p>
 											</div>
 											<div class="datastatistics">
@@ -84,7 +84,7 @@
 									<div class="col-lg-2 col-sm-6 paddingLR-sm">
 										<div class="statistic-box bg-primary m-bottom-md">
 											<div class="statistic_text">
-												<p><strong>{{ $oil_recover }}</strong>元</p>
+												<p><strong>{{ $count['oil_recover'] }}</strong>元</p>
 												<p>油卡回收总金额</p>
 											</div>
 											<div class="datastatistics">
@@ -121,7 +121,7 @@
 						  <input type="text" name="start" id="from01" value="@if(isset($_GET['start'])){{ $_GET['start'] }}@endif" class="form-control ccdates" placeholder="起始时间"> -
 						  <input type="text" name="end" id="to01" value="@if(isset($_GET['end'])){{ $_GET['end'] }}@endif" class="form-control ccdates" placeholder="截止时间">
                         	<input type="submit" class="btn btn-success btn-sm" value="搜索">
-						  <input  type="submit" id="fund-a" class="btn btn-success btn-sm label-danger" name="Excel" value="生成报价单">
+						  <input  type="submit" id="fund-a" class="btn btn-success btn-sm label-danger" name="Excel" value="Excel">
 						  {{--<a class="label label-danger" href="{{ url('admin/bill/export') }}"></a>--}}
 					  </form>
                     </div>
@@ -160,7 +160,7 @@
 								<td>{{ $debit->oil_recover }}</td>
 								<td>{{ $debit->actual_disburse }}</td>
 								<td>{{ $debit->remaining }}</td>
-								<td>{{ $debit->note }}</td>
+								<td>{{ $debit->note ? $debit->note : '无'  }}</td>
 								<td>{{ $debit->created_at }}</td>
 								<td class="nscs-table-handle">
 									<span><a href="{{ url('admin/bill/edit',['id'=>$debit->id]) }}" class="btn-blue"><i class="fa fa-edit"></i><p>编辑</p></a></span>

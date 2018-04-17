@@ -28,21 +28,21 @@ class UserController extends AdminController
     {
         $users = Auth::user();
 
-        $user = Hash::check($request->old_password, $users->password);
+        $user = Hash::check($this->request->old_password, $users->password);
 
         if (!$user) {
             return redirect()->back()->with('status', [
                'code'=>'success',
                'msg'=>'原密码错误',
             ]);
-        } elseif ($request->password != $request->confirm_password) {
+        } elseif ($this->request->password != $this->request->confirm_password) {
             return redirect()->back()->with('status', [
                 'code'=>'success',
                 'msg'=>'新密码输入不一致',
             ]);
         }
 
-        $users->password = bcrypt($request->password);
+        $users->password = bcrypt($this->request->password);
 
         $users->save();
 

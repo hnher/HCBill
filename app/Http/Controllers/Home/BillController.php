@@ -10,47 +10,52 @@ use Illuminate\Http\Request;
 
 class BillController extends HomeController
 {
-    public function index()
+    /**
+     * 前台首页账单添加
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function add(Handle $handle, Project $project)
     {
-        return view('home.bill.index');
-    }
+        $handles = $handle->get();
 
-    public function add()
-    {
-        $handles = (new Handle())->get();
-
-        $projects = (new Project())->get();
+        $projects = $project->get();
 
         return view('home.add', ['handles'=>$handles, 'projects'=>$projects]);
     }
 
+    /**
+     * 前台添加方法
+     * @param BillRequest $request
+     * @param Debit $debit
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(BillRequest $request, Debit $debit)
     {
-        $actual_disburse = $request->cash_disburse + $request->oil_disburse - $request->cash_recover - $request->oil_recover;
+        $actual_disburse = $this->request->cash_disburse + $this->request->oil_disburse - $this->request->cash_recover - $this->request->oil_recover;
 
-        $debit->project_id = $request->project_Id;
+        $debit->project_id = $this->request->project_Id;
 
-        $debit->name = $request->name;
+        $debit->name = $this->request->name;
 
-        $debit->amount = $request->amount;
+        $debit->amount = $this->request->amount;
 
-        $debit->handle_id = $request->handle_Id;
+        $debit->handle_id = $this->request->handle_Id;
 
-        $debit->price = $request->price;
+        $debit->price = $this->request->price;
 
-        $debit->cash_disburse = $request->cash_disburse;
+        $debit->cash_disburse = $this->request->cash_disburse;
 
-        $debit->cash_recover = $request->cash_recover;
+        $debit->cash_recover = $this->request->cash_recover;
 
-        $debit->oil_disburse = $request->oil_disburse;
+        $debit->oil_disburse = $this->request->oil_disburse;
 
-        $debit->oil_recover = $request->oil_recover;
+        $debit->oil_recover = $this->request->oil_recover;
 
         $debit->actual_disburse = $actual_disburse;
 
-        $debit->remaining = $request->price - $actual_disburse;
+        $debit->remaining = $this->request->price - $actual_disburse;
 
-        $debit->note = $request->note;
+        $debit->note = $this->request->note;
 
         $debit->save();
 

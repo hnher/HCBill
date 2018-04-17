@@ -112,11 +112,11 @@ html{
 				{{ csrf_field() }}
 			<div class="form-group">
 				<label for="name">品名:</label>
-				<input type="text" name="name" id="name" class="field-input" placeholder="请填写品名">
+				<input type="text" name="name"  value="{{ old('name') }}" id="name" class="field-input" placeholder="请填写品名">
 			</div>
 				<div class="form-group">
 					<label for="name">数量:</label>
-					<input type="text" name="amount" id="name" class="field-input" placeholder="请填写数量">
+					<input type="text" name="amount" value="{{ old('amount') }}" id="name"  class="field-input" placeholder="请填写数量">
 				</div>
 				<div class="form-group">
 					<label for="state">经手人:</label>

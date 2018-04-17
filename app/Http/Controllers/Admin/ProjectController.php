@@ -8,19 +8,29 @@ use Illuminate\Http\Request;
 
 class ProjectController extends AdminController
 {
+    /**
+     * 项目名添加
+     * @param Project $project
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function add(Project $project)
     {
-        return view('admin.project.add', compact('project'));
+        return view('admin.project.add', ['project'=>$project]);
     }
 
+    /**
+     * 项目名添加方法
+     * @param Project $project
+     * @param ProjectRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Project $project, ProjectRequest $request)
     {
-        if ($request->id) {
-
-            $project = $project->findOrFail($request->id);
+        if ($this->request->id) {
+            $project = $project->findOrFail($this->request->id);
         }
 
-        $project->project_name = $request->project_name;
+        $project->project_name = $this->request->project_name;
 
         $project->save();
 
@@ -30,26 +40,38 @@ class ProjectController extends AdminController
         ]);
     }
 
-
+    /**
+     * 项目名列表
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $projecteds = (new Project())->paginate(5);
 
-        return view('admin/project/index', compact('projecteds'));
+        return view('admin/project/index', ['projecteds'=>$projecteds]);
     }
 
-
+    /**
+     * 项目名编辑
+     * @param Project $project
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function edit(Project $project, Request $request)
     {
         $project = $project->findOrFail($request->id);
 
-        return  view('admin.project.add', compact('project'));
+        return  view('admin.project.add', ['project'=>$project]);
     }
 
-
+    /**
+     * 项目名删除
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function delete($id)
     {
-        $project = Project::where('id', $id)->first();
+        $project = Project::where('id', $id)->firstOrFail();
 
         if (count($project->debit)) {
             return redirect()->back()->with('status', [

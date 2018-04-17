@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Exports\DebitsExport;
-use App\Helpers\Count;
+use App\Helpers\billCount;
 use App\Http\Requests\BillRequest;
 use App\Model\Debit;
 use App\Model\Handle;
@@ -19,40 +19,45 @@ class BillController extends AdminController
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(Debit $debit, Request $request)
+    public function index(Debit $debit, Request $request, Handle $handle, Project $project)
     {
         $query = $debit->query();
 
+
         if ($request->Keywordj) {
-            $query->where('handle_id', 'like', '%' . $request->Keywordj . '%');
+            $query->where('handle_id', $request->Keywordj);
         }
 
         if ($request->Keywordx) {
-            $query->where('project_id', 'like', '%' . $request->Keywordx . '%');
+            $query->where('project_id',$request->Keywordx);
         }
 
-        if ($request->start && $request->end)
-        {
+        if ($request->start && $request->end) {
             $query->whereBetween('created_at', [strtotime($request->start),strtotime($request->end)]);
+        }
+
+        if ($request->start) {
+            $query->where('created_at', '>=', strtotime($request->start));
+        } elseif ($request->end) {
+            $query->where('created_at', '<=', strtotime($request->end));
         }
 
         if ($request->keyword) {
 
-            $query->orWhereHas('project', function ($query) use ($request){
+            $query->where(function ($query) use ($request) {
 
-                $query->Where('project_name', 'like', '%' . $request->keyword . '%');
+                $query->orWhereHas('project', function ($query) use ($request){
 
+                    $query->Where('project_name', 'like', '%' . $request->keyword . '%');
+                });
+                $query->orWhereHas('handle', function ($query) use ($request){
+
+                    $query->Where('handle_name', 'like', '%' . $request->keyword . '%');
+                });
+                $query->orWhere('name', 'like', '%' . $request->keyword . '%');
+
+                $query->orWhere('note', 'like', '%' . $request->keyword . '%');
             });
-
-            $query->orWhereHas('handle', function ($query) use ($request){
-
-                $query->Where('handle_name', 'like', '%' . $request->keyword . '%');
-
-            });
-
-            $query->orWhere('name', 'like', '%' . $request->keyword . '%');
-
-            $query->orWhere('note', 'like', '%' . $request->keyword . '%');
         }
 
         if ($request->Excel) {
@@ -66,35 +71,17 @@ class BillController extends AdminController
 
         $debits = $query->with('project', 'handle')->paginate(10);
 
-        $handles = (new Handle())->get();
+        $handles = $handle->get();
 
-        $projects = (new Project())->get();
+        $projects = $project->get();
 
-        //以下是统计
-        $countProject = (new Project())->get()->count();//项目统计
-
-        $countHandles = (new Handle())->get()->count();//品名统计
-
-        $counts = new Debit();
-
-        $countDisburses = $counts->pluck('cash_disburse')->sum();//现金支出总金额统计
-
-        $countRecover = $counts->pluck('cash_recover')->sum();//现金回收总金额统计
-
-        $oil_disburse = $counts->pluck('oil_disburse')->sum();//油卡支出总金额
-
-        $oil_recover = $counts->pluck('oil_recover')->sum();//油卡支出总金额
+        $count = (new billCount())->getBill();
 
         return view('admin.bill.index', [
             'debits'=>$debits,
             'handles'=>$handles,
             'projects'=>$projects,
-            'countProject'=>$countProject,
-            'countHandles'=>$countHandles,
-            'countDisburses'=>$countDisburses,
-            'countRecover'=>$countRecover,
-            'oil_disburse'=>$oil_disburse,
-            'oil_recover'=>$oil_recover,
+            'count'=>$count,
         ]);
     }
 
@@ -104,14 +91,17 @@ class BillController extends AdminController
      * @param Debit $debit
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function add(Debit $debit)
+    public function add(Debit $debit, Handle $handle, Project $project)
     {
+        $handles = $handle->get();
 
-        $handles = (new Handle())->get();
+        $projects = $project->get();
 
-        $projects = (new Project())->get();
-
-        return view('admin.bill.add', ['debit'=>$debit, 'handles'=>$handles, 'projects'=>$projects ]);
+        return view('admin.bill.add', [
+            'debit'=>$debit,
+            'handles'=>$handles,
+            'projects'=>$projects,
+        ]);
     }
 
 
@@ -123,37 +113,36 @@ class BillController extends AdminController
      */
     public function store(BillRequest $request, Debit $debit)
     {
+        if($this->request->id){
 
-        if($request->id){
-
-            $debit = $debit->findOrFail($request->id);
+            $debit = $debit->findOrFail($this->request->id);
         }
 
-        $actual_disburse = $request->cash_disburse + $request->oil_disburse - $request->cash_recover - $request->oil_recover;//实际开支
+        $actual_disburse = $this->request->cash_disburse + $this->request->oil_disburse - $this->request->cash_recover - $this->request->oil_recover;//实际开支
 
-        $debit->project_id = $request->project_Id;
+        $debit->project_id = $this->request->project_Id;
 
-        $debit->name = $request->name;
+        $debit->name = $this->request->name;
 
-        $debit->amount = $request->amount;
+        $debit->amount = $this->request->amount;
 
-        $debit->handle_id = $request->handle_Id;
+        $debit->handle_id = $this->request->handle_Id;
 
-        $debit->price = $request->price;
+        $debit->price = $this->request->price;
 
-        $debit->cash_disburse = $request->cash_disburse;
+        $debit->cash_disburse = $this->request->cash_disburse;
 
-        $debit->cash_recover = $request->cash_recover;
+        $debit->cash_recover = $this->request->cash_recover;
 
-        $debit->oil_disburse = $request->oil_disburse;
+        $debit->oil_disburse = $this->request->oil_disburse;
 
-        $debit->oil_recover = $request->oil_recover;
+        $debit->oil_recover = $this->request->oil_recover;
 
         $debit->actual_disburse = $actual_disburse;
 
-        $debit->remaining = $request->price - $actual_disburse;
+        $debit->remaining = $this->request->price - $actual_disburse;
 
-        $debit->note = $request->note;
+        $debit->note = $this->request->note;
 
         $debit->save();
 
@@ -170,15 +159,19 @@ class BillController extends AdminController
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(Debit $debit, Request $request)
+    public function edit(Debit $debit, Request $request, Handle $handle, Project $project)
     {
         $debit = $debit->findOrFail($request->id);
 
-        $handles = (new Handle())->get();
+        $handles = $handle->get();
 
-        $projects = (new Project())->get();
+        $projects = $project->get();
 
-        return view('admin.bill.add', ['debit'=>$debit, 'handles'=>$handles, 'projects'=>$projects ]);
+        return view('admin.bill.add', [
+            'debit'=>$debit,
+            'handles'=>$handles,
+            'projects'=>$projects,
+        ]);
     }
 
 
