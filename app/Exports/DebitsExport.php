@@ -6,7 +6,7 @@
  * Time: 16:38
  */
 namespace App\Exports;
-use App\Model\Debit;
+use App\Model\Bill;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithMapping;
@@ -26,7 +26,7 @@ class DebitsExport implements WithHeadings, WithMapping, FromQuery
      */
     public function query()
     {
-        $query = Debit::query();
+        $query = Bill::query();
 
         if (is_array($this->id)) {
             return $query->whereIn('id', $this->id);
@@ -41,27 +41,29 @@ class DebitsExport implements WithHeadings, WithMapping, FromQuery
      * @param mixed $debit
      * @return array
      */
-    public function map($debit): array
+    public function map($billId): array
     {
         return [
-            $debit->project->project_name,
-            $debit->name,
-            $debit->amount,
-            $debit->handle->handle_name,
-            $debit->price,
-            $debit->cash_disburse,
-            $debit->cash_recover,
-            $debit->oil_disburse,
-            $debit->oil_recover,
-            $debit->actual_disburse,
-            $debit->remaining,
-            $debit->note,
-            $debit->created_at,
+            $billId->user->name,
+            $billId->project->project_name,
+            $billId->name,
+            $billId->amount,
+            $billId->handle->handle_name,
+            $billId->price,
+            $billId->cash_disburse,
+            $billId->cash_recover,
+            $billId->oil_disburse,
+            $billId->oil_recover,
+            $billId->actual_disburse,
+            $billId->remaining,
+            $billId->note,
+            $billId->created_at,
         ];
     }
     public function headings(): array
     {
         return [
+            '会员名',
             '项目名',
             '品名',
             '数量',

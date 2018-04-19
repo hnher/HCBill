@@ -6,9 +6,9 @@ class Handle extends Model
 {
     protected $table = 'handle';
 
-    public function debit()
+    public function bill()
     {
-        return $this->hasOne('App\Model\Debit','handle_id','id');
+        return $this->hasOne('App\Model\Bill','handle_id','id');
     }
 
 }

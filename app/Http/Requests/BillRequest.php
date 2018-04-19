@@ -17,6 +17,7 @@ class BillRequest extends FormRequest
     }
 
     /**
+     * 账单添加验证
      * Get the validation rules that apply to the request.
      *
      * @return array

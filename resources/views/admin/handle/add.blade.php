@@ -7,7 +7,7 @@
         <div class="padding-md">
             <!--当前位置 begin-->
             <h3 class="header-text">经手人
-                <span class="hed_te_span"><a  href="{{ url('admin/handle') }}">列表</a><a class="cursa"  href="#">新增</a></span></h3>
+                <span class="hed_te_span"><a  href="{{ url('admin/handle') }}">列表</a></span></h3>
             <!--当前位置 end-->
             <div class="smart-widget">
                 <div class="smart-widget-header">
@@ -31,7 +31,9 @@
                                     <input type="text" class="form-control input-sm" name="handle_name"  value="{{ $handle->handle_name }}" placeholder="经手人">
                                 </div><!-- /.col -->
                                 <input type="hidden"  name="id" value="{{ $handle->id }}" >
+                                @if($handle->id) {{ method_field('PUT') }} @endif
                                 {{ csrf_field() }}
+
                             </div><!-- /form-group -->
 
                             <div class="text-center m-top-md">

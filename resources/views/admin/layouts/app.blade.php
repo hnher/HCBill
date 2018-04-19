@@ -171,6 +171,22 @@
                             <li><a href="{{ url('admin/handle') }}"><span class="submenu-label">经手人列表</span></a></li>
                         </ul>
                     </li>
+                    <li class="openable bg-palette3">
+                        <a href="#">
+									<span class="menu-content block">
+										<span class="menu-icon"><i class="block fa fa-graduation-cap fa-lg"></i></span>
+										<span class="text m-left-sm">会员管理</span>
+										<span class="submenu-icon"></span>
+									</span>
+                            <span class="menu-content-hover block">
+										会员管理
+									</span>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="{{ url('admin/member/add') }}"><span class="submenu-label">添加会员</span></a></li>
+                            <li><a href="{{ url('admin/member') }}"><span class="submenu-label">会员列表</span></a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <!--左侧nav end-->

@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'PRC',
+    'timezone' => 'Asia/Shanghai',
 
     /*
     |--------------------------------------------------------------------------
@@ -180,6 +180,8 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         //Debugbar
         Barryvdh\Debugbar\ServiceProvider::class,
+        //日志
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
 
     ],
 

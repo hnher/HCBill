@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\LogsShipped;
 use App\Http\Requests\ProjectRequest;
 use App\Model\Project;
 use Illuminate\Http\Request;
@@ -34,6 +35,12 @@ class ProjectController extends AdminController
 
         $project->save();
 
+        if ($this->request->method() == "POST") {
+            event(new LogsShipped($this->request,1,  5));
+        } elseif ($this->request->method() == "PUT") {
+            event(new LogsShipped($this->request, 2, 5));
+        }
+
         return redirect('admin/project')->with('status', [
            'code'=>'success',
            'msg'=>'操作成功',
@@ -44,9 +51,14 @@ class ProjectController extends AdminController
      * 项目名列表
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(Project $project)
     {
-        $projecteds = (new Project())->paginate(5);
+        $query = $project->query();
+
+        if ($this->request->name) {
+            $query->where('project_name', 'like', '%' . $this->request->name . '%');
+        }
+        $projecteds = $query->orderBy('created_at', 'desc')->paginate(100);
 
         return view('admin/project/index', ['projecteds'=>$projecteds]);
     }
@@ -73,14 +85,16 @@ class ProjectController extends AdminController
     {
         $project = Project::where('id', $id)->firstOrFail();
 
-        if (count($project->debit)) {
+        if (count($project->bill)) {
             return redirect()->back()->with('status', [
-                'code'=>'success',
+                'code'=>'error',
                 'msg'=>'账单列表使用中--不可删除',
             ]);
         }
 
         $project->delete();
+
+        event(new LogsShipped($this->request, 3, 5));
 
         return redirect()->back()->with('status', [
             'code'=>'success',

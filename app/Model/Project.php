@@ -6,8 +6,8 @@ class Project extends Model
 {
     protected $table = 'project';
 
-    public function debit()
+    public function bill()
     {
-        return $this->hasOne('App\Model\Debit','project_id','id');
+        return $this->hasOne('App\Model\Bill','project_id','id');
     }
 }

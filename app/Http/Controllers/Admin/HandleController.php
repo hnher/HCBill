@@ -1,8 +1,10 @@
 <?php
 namespace App\Http\Controllers\Admin;
+use App\Events\LogsShipped;
 use App\Http\Requests\HandleRequest;
 use App\Model\Handle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HandleController extends AdminController
 {
@@ -32,6 +34,12 @@ class HandleController extends AdminController
 
         $handle->save();
 
+        if ($this->request->method() == "POST") {
+            event(new LogsShipped($this->request,1,  4));
+        } elseif ($this->request->method() == "PUT") {
+            event(new LogsShipped($this->request, 2, 4));
+        }
+
         return redirect('admin/handle')->with('status', [
            'code'=>'success',
            'msg'=>'成功',
@@ -42,9 +50,15 @@ class HandleController extends AdminController
      * 经手人列表
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(Handle $handle)
     {
-        $handles = (new Handle())->paginate(10);
+        $query = $handle->query();
+
+        if ($this->request->name) {
+            $query->where('handle_name', 'like', '%' . $this->request->name . '%');
+        }
+
+        $handles = $query->orderBy('created_at', 'desc')->paginate(100);
 
         return view('admin.handle/index', ['handles'=>$handles]);
     }
@@ -71,14 +85,16 @@ class HandleController extends AdminController
     {
         $handle = Handle::where('id', $id)->firstOrFail();
 
-        if (count($handle->debit)) {
+        if (count($handle->bill)) {
             return redirect()->back()->with('status', [
-                'code'=>'success',
+                'code'=>'error',
                 'msg'=>'账单列表使用中--不可删除',
             ]);
         }
 
         $handle->delete();
+
+        event(new LogsShipped($this->request, 3,  4));
 
         return redirect()->back()->with('status', [
             'code'=>'success',

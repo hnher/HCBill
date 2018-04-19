@@ -1,4 +1,5 @@
 @extends('admin.layouts.app')
+
 @section('title','项目名')
 
 @section('centent')
@@ -10,7 +11,12 @@
                 <!--当前位置 begin-->
                     <h3 class="header-text">项目名列表</h3>
                 <!--当前位置 end-->
-
+					<div class="breadcrumb ccsearch">
+						<form action="{{ url('admin/project') }}" method="get">
+							<input type="text" class="form-control ccdates" value="@if(isset($_GET['name'])){{ $_GET['name'] }}@endif" name="name" placeholder="项目名字/关键词查询">
+							<input type="submit" class="btn btn-success btn-sm" value="搜索">
+						</form>
+					</div>
 
 					<table class="table table-striped ccad_table">
 						<thead>
@@ -29,7 +35,7 @@
 
                                 <td class="nscs-table-handle">
                                     <span><a href="{{ url('admin/project/edit',['id'=>$projected->id]) }}" class="btn-blue"><i class="fa fa-edit"></i><p>编辑</p></a></span>
-                                    <span><a href="{{ url('admin/project/delete',['id'=>$projected->id]) }}" nctype="btn_del_account" data-seller-id="1" class="btn-red"><i class="fa fa-trash-o"></i><p>删除</p></a></span>
+                                    <span><a onclick="return confirm('您确认删除吗？')" href="{{ url('admin/project/delete',['id'=>$projected->id]) }}" nctype="btn_del_account" data-seller-id="1" class="btn-red"><i class="fa fa-trash-o"></i><p>删除</p></a></span>
                                 </td>  
 							</tr>
 						@endforeach
@@ -39,7 +45,14 @@
                     <div class="row">
                         <div class="col-xs-6">
                             <div class="dataTables_paginate paging_simple_numbers">
-                                {{--{{  }}--}}
+                                <?php
+                                $keywords = [];
+                                if (isset($_GET['name']))
+                                {
+                                    $keywords['name'] = $_GET['name'];
+                                }
+                                ?>
+								{!! $projecteds->appends($keywords)->render() !!}
                             </div>
                         </div>
                     </div>

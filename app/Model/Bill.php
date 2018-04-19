@@ -2,9 +2,9 @@
 
 namespace App\Model;
 
-class Debit extends Model
+class Bill extends Model
 {
-    protected $table = 'debit';
+    protected $table = 'bill';
 
     public function project()
     {
@@ -14,5 +14,10 @@ class Debit extends Model
     public function handle()
     {
         return $this->hasOne('App\Model\Handle', 'id', 'handle_id');
+    }
+
+    public function user()
+    {
+        return $this->hasOne('App\Model\Users', 'id', 'user_id');
     }
 }

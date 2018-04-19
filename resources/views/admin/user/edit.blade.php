@@ -25,22 +25,29 @@
 												</div>
 											@endif
 											<div class="form-group">
-												<label class="control-label col-lg-2">旧密码</label>
+												<label class="control-label col-lg-2">角色名</label>
 												<div class="col-lg-10">
-													<input type="text" name="old_password" class="form-control input-sm" data-parsley-required="true" placeholder="请输入旧密码">
+													<input type="text" name="name" value="{{ $user->name }}" class="form-control input-sm" data-parsley-required="true" placeholder="请输入角色名">
 												</div><!-- /.col -->
 											</div><!-- /form-group -->
+												<div class="form-group">
+													<label class="control-label col-lg-2">邮箱账号</label>
+													<div class="col-lg-10">
+														<input type="text" name="email" value="{{ $user->email }}" class="form-control input-sm" data-parsley-required="true" placeholder="请输入邮箱账号">
+													</div><!-- /.col -->
+												</div><!-- /form-group -->
+												@if($user->id) {{ method_field('PUT') }} @endif
 											{{ csrf_field() }}
 											<div class="form-group">
 												<label class="control-label col-lg-2">新密码</label>
 												<div class="col-lg-10">
-													<input type="password" name="password" id="password" class="form-control input-sm" data-parsley-required="true" data-parsley-length="[6, 12]" placeholder="请输入新密码，长度6-12">
+													<input type="password" name="password"  value="" id="password" class="form-control input-sm" data-parsley-required="true" data-parsley-length="[6, 12]" placeholder="不需要修改密码时可不填！">
                                                 </div><!-- /.col -->
 											</div><!-- /form-group -->
 											<div class="form-group">
 												<label class="control-label col-lg-2">确认新密码</label>
 												<div class="col-lg-2">
-													<input type="password" name="confirm_password" class="form-control input-sm" data-parsley-equalto="#textbox1" data-parsley-required="true" placeholder="请确认新密码">
+													<input type="password" name="confirm_password" value="" class="form-control input-sm" data-parsley-equalto="#textbox1" data-parsley-required="true" placeholder="不需要修改密码时可不填！">
                                                 </div><!-- /.col -->
 											</div><!-- /form-group -->
 											<div class="text-center m-top-md">

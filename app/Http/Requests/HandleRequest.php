@@ -17,6 +17,7 @@ class HandleRequest extends FormRequest
     }
 
     /**
+     * 经手人添加验证
      * Get the validation rules that apply to the request.
      *
      * @return array

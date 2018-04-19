@@ -1,7 +1,12 @@
 @extends('admin.layouts.app')
 @section('title','添加')
 @section('css')
-
+    {{--时间--}}
+    <script type="text/javascript" src="/js/jquery.ui.core.js"></script>
+    <script type="text/javascript" src="/js/jquery.ui.datepicker.js"></script>
+    <script type="text/javascript" src="/js/datechoice.js"></script>
+    <link href="/css/jquery.ui.datepicker.css" rel="stylesheet" />
+    {{--时间--}}
     <script src="/bootstrap/css/fileinput.css"></script>
     <script src="/bootstrap/css/default.css"></script>
 
@@ -34,7 +39,7 @@
                                     <div class="col-lg-3">
                                         <select class="form-control fbsj" name="project_Id">
                                             @foreach($projects as $project)
-                                            <option value="{{ $project->id }}" @if($debit->project_id == $project->id) selected @endif>{{ $project->project_name ?$project->project_name : '暂无分类' }}</option>
+                                            <option value="{{ $project->id }}" @if($bill->project_id == $project->id) selected @endif>{{ $project->project_name ?$project->project_name : '暂无分类' }}</option>
                                             @endforeach
                                         </select>
                                     </div><!-- /.col -->
@@ -43,23 +48,24 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-2">品名：</label>
                                 <div class="col-lg-3">
-                                    <input type="text" class="form-control input-sm" value="{{ old('name',$debit->name) }}" name="name" >
+                                    <input type="text" class="form-control input-sm" value="{{ old('name',$bill->name) }}" name="name" placeholder="请填写品名">
                                 </div><!-- /.col -->
                             </div><!-- /form-group -->
-                            <input type="hidden"  name="id" value="{{ $debit->id }}" >
+                            <input type="hidden"  name="id" value="{{ $bill->id }}" >
                             <div class="form-group">
                                 <label class="control-label col-lg-2">数量：</label>
                                 <div class="col-lg-3">
-                                    <input type="text" class="form-control input-sm" value="{{ old('amount',$debit->amount) }}" name="amount" >
+                                    <input type="text" class="form-control input-sm" value="{{ old('amount',$bill->amount) }}" name="amount" placeholder="请填写数量">
                                 </div><!-- /.col -->
                             </div><!-- /form-group -->
+                            @if($bill->id) {{ method_field('PUT') }} @endif
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label class="control-label col-lg-2">经手人：</label>
                                 <div class="col-lg-3">
                                     <select class="form-control fbsj" name="handle_Id">
                                         @foreach($handles as $handle)
-                                            <option value="{{ $handle->id }}" @if($debit->handle_id == $handle->id ) selected @endif>{{ $handle->handle_name ? $handle->handle_name : '暂无' }}</option>
+                                            <option value="{{ $handle->id }}" @if($bill->handle_id == $handle->id ) selected @endif>{{ $handle->handle_name ? $handle->handle_name : '暂无' }}</option>
                                         @endforeach
                                     </select>
                                 </div><!-- /.col -->
@@ -67,37 +73,43 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-2">运价：</label>
                                 <div class="col-lg-3">
-                                    <input type="text" class="form-control input-sm" value="{{ old('price',$debit->price) }}" name="price" >
+                                    <input type="text" class="form-control input-sm" value="{{ old('price',$bill->price) }}" name="price" placeholder="请填写运价">
                                 </div><!-- /.col -->
                             </div><!-- /form-group -->
                             <div class="form-group">
                                 <label class="control-label col-lg-2">现金支出：</label>
                                 <div class="col-lg-3">
-                                    <input type="text" class="form-control input-sm" value="{{ old('cash_disburse',$debit->cash_disburse) }}" name="cash_disburse" >
+                                    <input type="text" class="form-control input-sm" value="{{ old('cash_disburse',$bill->cash_disburse) }}" name="cash_disburse" placeholder="请填写现金支出">
                                 </div><!-- /.col -->
                             </div><!-- /form-group -->
                             <div class="form-group">
                                 <label class="control-label col-lg-2">现金回收：</label>
                                 <div class="col-lg-3">
-                                    <input type="text" class="form-control input-sm" value="{{ old('cash_recover',$debit->cash_recover) }}" name="cash_recover" >
+                                    <input type="text" class="form-control input-sm" value="{{ old('cash_recover',$bill->cash_recover) }}" name="cash_recover" placeholder="请填写现金回收">
                                 </div><!-- /.col -->
                             </div><!-- /form-group -->
                             <div class="form-group">
                                 <label class="control-label col-lg-2">油卡支出：</label>
                                 <div class="col-lg-3">
-                                    <input type="text" class="form-control input-sm" value="{{ old('oil_disburse',$debit->oil_disburse) }}" name="oil_disburse" >
+                                    <input type="text" class="form-control input-sm" value="{{ old('oil_disburse',$bill->oil_disburse) }}" name="oil_disburse" placeholder="请填写油卡支出">
                                 </div><!-- /.col -->
                             </div><!-- /form-group -->
                             <div class="form-group">
                                 <label class="control-label col-lg-2">油卡回收：</label>
                                 <div class="col-lg-3">
-                                    <input type="text" class="form-control input-sm" value="{{ old('oil_recover',$debit->oil_recover) }}" name="oil_recover" >
+                                    <input type="text" class="form-control input-sm" value="{{ old('oil_recover',$bill->oil_recover) }}" name="oil_recover" placeholder="请填写油卡回收">
+                                </div><!-- /.col -->
+                            </div><!-- /form-group -->
+                            <div class="form-group">
+                                <label class="control-label col-lg-2">创建时间：</label>
+                                <div class="col-lg-3">
+                                    <input type="text" name="customize_time" id="from01" @if($bill->id)value="{{ old('customize_time', date("Y/m/d", $bill->customize_time)) }}" @endif class="form-control ccdates" placeholder="创建时间">
                                 </div><!-- /.col -->
                             </div><!-- /form-group -->
                             <div class="form-group">
                                 <label class="control-label col-lg-2">备注：</label>
                                 <div class="col-lg-3">
-                                    <input type="text" class="form-control input-sm" value="{{ old('note',$debit->note) }}" name="note" >
+                                    <input type="text" class="form-control input-sm" value="{{ old('note',$bill->note) }}" name="note" placeholder="可不填写">
                                 </div><!-- /.col -->
                             </div><!-- /form-group -->
 

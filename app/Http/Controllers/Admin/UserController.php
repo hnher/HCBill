@@ -2,21 +2,26 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\UserRequest;
-use App\Model\Users;
+use App\Events\LogsShipped;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class UserController extends AdminController
 {
+    /**
+     * 下面是用户登陆状态下自己修改密码
+     */
+
     /**
      * 修改密码页面
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit()
     {
-        return view('admin.user.edit');
+        $user = Auth::user();
+
+        return view('admin.user.edit', ['user'=>$user]);
     }
 
     /**
@@ -28,29 +33,32 @@ class UserController extends AdminController
     {
         $users = Auth::user();
 
-        $user = Hash::check($this->request->old_password, $users->password);
+        $users->name = $this->request->name;
 
-        if (!$user) {
-            return redirect()->back()->with('status', [
-               'code'=>'success',
-               'msg'=>'原密码错误',
-            ]);
-        } elseif ($this->request->password != $this->request->confirm_password) {
-            return redirect()->back()->with('status', [
-                'code'=>'success',
-                'msg'=>'新密码输入不一致',
-            ]);
+        $users->email = $this->request->email;
+
+        if ($this->request->password) {
+            if ($this->request->password != $this->request->confirm_password) {
+                return redirect()->back()->with('status', [
+                    'code'=>'success',
+                    'msg'=>'新密码输入不一致',
+                ]);
+            }
+
+            $users->password = bcrypt($this->request->password);
+
+            $users->save();
+
+            Auth::logout();
         }
-
-        $users->password = bcrypt($this->request->password);
 
         $users->save();
 
-        Auth::logout();
+        event(new LogsShipped($this->request, 2 , 7));
 
-        return redirect('admin/login')->with('status', [
+        return redirect()->back()->with('status', [
             'code'=>'success',
-            'msg'=>'修改成功密码成功,请从新登陆',
+            'msg'=>'账户修改成功',
         ]);
     }
 }

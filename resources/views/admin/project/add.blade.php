@@ -7,7 +7,7 @@
         <div class="padding-md">
             <!--当前位置 begin-->
             <h3 class="header-text">项目
-                <span class="hed_te_span"><a  href="{{ url('admin/project') }}">列表</a><a class="cursa"  href="{{ url('admin/project/add') }}">新增</a></span></h3>
+                <span class="hed_te_span"><a  href="{{ url('admin/project') }}">列表</a></span></h3>
             <!--当前位置 end-->
             <div class="smart-widget">
                 <div class="smart-widget-header">
@@ -31,6 +31,7 @@
                                     <input type="text" class="form-control input-sm" name="project_name" value="{{ $project->project_name }}" placeholder="项目名">
                                 </div><!-- /.col -->
                                 <input type="hidden"  name="id" value="{{ $project->id }}" >
+                                @if($project->id) {{ method_field('PUT') }} @endif
                             </div><!-- /form-group -->
                             {{ csrf_field() }}
                             <div class="text-center m-top-md">
