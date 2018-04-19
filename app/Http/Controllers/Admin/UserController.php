@@ -32,6 +32,7 @@ class UserController extends AdminController
     public function update(UserRequest $request)
     {
 
+
         $users = Auth::user();
 
         $users->name = $this->request->name;
@@ -50,12 +51,17 @@ class UserController extends AdminController
 
             $users->save();
 
+            event(new LogsShipped($this->request, 2 , 7));
+
+            event(new LogsShipped($this->request, 8 , 7));
+
             Auth::logout();
+
+        } elseif ($this->request->password == '') {
+            $users->save();
+
+            event(new LogsShipped($this->request, 2 , 7));
         }
-
-        $users->save();
-
-        event(new LogsShipped($this->request, 2 , 7));
 
         return redirect()->back()->with('status', [
             'code'=>'success',
