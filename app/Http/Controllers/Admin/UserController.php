@@ -31,6 +31,7 @@ class UserController extends AdminController
      */
     public function update(UserRequest $request)
     {
+
         $users = Auth::user();
 
         $users->name = $this->request->name;
