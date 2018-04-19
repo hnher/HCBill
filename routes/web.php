@@ -90,7 +90,7 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin'], function () {
 
                 Route::get('edit', 'UserController@edit');
 
-                Route::post('update', 'UserController@update');
+                Route::put('update', 'UserController@update');
             });
 
             /**

@@ -8,6 +8,12 @@
 	<link rel="stylesheet" href="/home/css/exchange.css">
 	<script  src="/js/jquery-1.11.1.min.js"></script>
 	<script  src="/js/layer/layer.js"></script>
+	{{--时间--}}
+	<script type="text/javascript" src="/js/jquery.ui.core.js"></script>
+	<script type="text/javascript" src="/js/jquery.ui.datepicker.js"></script>
+	<script type="text/javascript" src="/js/datechoice.js"></script>
+	<link href="/css/jquery.ui.datepicker.css" rel="stylesheet" />
+	{{--时间--}}
 <link rel="stylesheet" type="text/css" href="/css/demo.css">
 <style>
 *{
@@ -108,7 +114,6 @@ html{
 						</select>
 					</div>
 				</div>
-
 				{{ csrf_field() }}
 			<div class="form-group">
 				<label for="name">品名:</label>
@@ -130,29 +135,34 @@ html{
 				</div>
 				<div class="form-group">
 					<label for="name">运价:</label>
-					<input type="text" name="price" value="{{ old('price') }}" id="name" class="field-input" placeholder="请填写运价">
+					<input type="text" name="price" value="0" id="name" class="field-input" placeholder="请填写运价">
 				</div>
 				<div class="form-group">
 					<label for="name">现金支出:</label>
-					<input type="text" name="cash_disburse" value="{{ old('cash_disburse') }}" id="cash_disburse" class="field-input" placeholder="请填写现金支出">
+					<input type="text" name="cash_disburse" value="0" id="cash_disburse" class="field-input" placeholder="请填写现金支出">
 				</div>
 
 				<div class="form-group">
 				<label for="name2">现金回收:</label>
-				<input type="text" name="cash_recover" value="{{ old('cash_recover') }}" id="cash_recover" class="field-input" placeholder="请填写现金回收">
+				<input type="text" name="cash_recover" value="0" id="cash_recover" class="field-input" placeholder="请填写现金回收">
 			</div>
 				<div class="form-group">
 					<label for="name2">油卡支出:</label>
-					<input type="text" name="oil_disburse" value="{{ old('oil_disburse') }}" id="cash_recover" class="field-input" placeholder="请填写油卡支出">
+					<input type="text" name="oil_disburse" value="0" id="cash_recover" class="field-input" placeholder="请填写油卡支出">
 				</div>
 				<div class="form-group">
 					<label for="name2">油卡回收:</label>
-					<input type="text" name="oil_recover" value="{{ old('oil_recover') }}" id="cash_recover" class="field-input" placeholder="请填写油卡回收">
+					<input type="text" name="oil_recover" value="0" id="cash_recover" class="field-input" placeholder="请填写油卡回收">
 				</div>
-
+				<div class="form-group">
+					<label class="control-label col-lg-2">创建时间：</label>
+					<div class="col-lg-3">
+						<input type="text" name="customize_time" id="from01"  class="form-control ccdates" placeholder="创建时间">
+					</div><!-- /.col -->
+				</div><!-- /form-group -->
 				<div class="form-group">
 					<label for="name2">备注:</label>
-					<input type="text" name="note" value="{{ old('note') }}" id="cash_recover" class="field-input" placeholder="请填写备注">
+					<input type="text" name="note"  id="cash_recover" class="field-input" placeholder="请填写备注">
 				</div>
 				<div class="change_box" href="">
 					<div class="chang_button">

@@ -54,8 +54,8 @@ class HandleController extends AdminController
     {
         $query = $handle->query();
 
-        if ($this->request->name) {
-            $query->where('handle_name', 'like', '%' . $this->request->name . '%');
+        if ($this->request->keyword) {
+            $query->where('handle_name', 'like', '%' . $this->request->keyword . '%');
         }
 
         $handles = $query->orderBy('created_at', 'desc')->paginate(100);

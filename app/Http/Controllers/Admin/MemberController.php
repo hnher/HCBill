@@ -60,8 +60,8 @@ class MemberController extends AdminController
     {
         $query = $users->query();
 
-        if ($this->request->name) {
-            $query->where('name', 'like', '%' . $this->request->name . '%');
+        if ($this->request->keyword) {
+            $query->where('name', 'like', '%' . $this->request->keyword . '%');
         }
 
         $users = $query->orderBy('created_at', 'desc')->paginate(100);

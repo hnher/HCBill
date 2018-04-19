@@ -218,9 +218,6 @@ class BillController extends AdminController
      */
     public function export($billId)
     {
-
-        return Excel::store(new DebitsExport($billId), 'invoices.xlsx');
-
-//        return Excel::download(new DebitsExport($billId), 'invoices.xlsx');
+        return Excel::download(new DebitsExport($billId), 'invoices.xlsx');
     }
 }

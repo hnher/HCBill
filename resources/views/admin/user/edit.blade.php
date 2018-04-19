@@ -14,7 +14,7 @@
 						</div>
 						<div class="smart-widget-inner">
 							<div class="smart-widget-body">
-										<form class="form-horizontal no-margin form-border" method="post" action="{{ url('admin/user/update') }}" id="basic-constraint" data-validate="parsley" novalidate>
+										<form class="form-horizontal no-margin form-border" method="put" action="{{ url('admin/user/update') }}" id="basic-constraint" data-validate="parsley" novalidate>
 											@if ($errors->any())
 												<div class="alert alert-danger">
 													<ul>
@@ -36,7 +36,6 @@
 														<input type="text" name="email" value="{{ $user->email }}" class="form-control input-sm" data-parsley-required="true" placeholder="请输入邮箱账号">
 													</div><!-- /.col -->
 												</div><!-- /form-group -->
-												@if($user->id) {{ method_field('PUT') }} @endif
 											{{ csrf_field() }}
 											<div class="form-group">
 												<label class="control-label col-lg-2">新密码</label>

@@ -16,7 +16,7 @@ class CreateBillTable extends Migration
         Schema::create('bill', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('project_id')->comment('项目名');
-            $table->integer('user_id')->comment('当前账户操作人');
+            $table->integer('user_id')->default(0)->comment('当前账户操作人');
             $table->string('name')->comment('品名');
             $table->string('amount')->comment('数量');
             $table->integer('handle_id')->comment('经手人');

@@ -12,7 +12,7 @@
                 <!--当前位置 end-->
 					<div class="breadcrumb ccsearch">
 						<form action="{{ url('admin/handle') }}" method="get">
-							<input type="text" class="form-control ccdates" value="@if(isset($_GET['name'])){{ $_GET['name'] }}@endif" name="name" placeholder="经手人名字/关键词查询">
+							<input type="text" class="form-control ccdates" value="@if(isset($_GET['keyword'])){{ $_GET['keyword'] }}@endif" name="keyword" placeholder="经手人名字/关键词查询">
 							<input type="submit" class="btn btn-success btn-sm" value="搜索">
 						</form>
 					</div>
@@ -44,9 +44,9 @@
                             <div class="dataTables_paginate paging_simple_numbers">
 								<?php
                                 	$keywords = [];
-                                	if (isset($_GET['name']))
+                                	if (isset($_GET['keyword']))
 									{
-										$keywords['name'] = $_GET['name'];
+										$keywords['keyword'] = $_GET['keyword'];
 									}
 								?>
 									{!! $handles->appends($keywords)->render() !!}

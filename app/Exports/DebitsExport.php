@@ -44,7 +44,7 @@ class DebitsExport implements WithHeadings, WithMapping, FromQuery
     public function map($billId): array
     {
         return [
-            $billId->user->name,
+            $billId->user ? $billId->user->name : '未知',
             $billId->project->project_name,
             $billId->name,
             $billId->amount,

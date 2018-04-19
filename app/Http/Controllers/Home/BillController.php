@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Requests\BillRequest;
-use App\Model\Debit;
+use App\Model\Bill;
 use App\Model\Handle;
 use App\Model\Project;
 use Illuminate\Http\Request;
@@ -29,35 +29,37 @@ class BillController extends HomeController
      * @param Debit $debit
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(BillRequest $request, Debit $debit)
+    public function store(BillRequest $request, Bill $bill)
     {
-        $actual_disburse = $this->request->cash_disburse + $this->request->oil_disburse - $this->request->cash_recover - $this->request->oil_recover;
+        $actual_disburse = $this->request->cash_disburse + $this->request->oil_disburse - $this->request->cash_recover - $this->request->oil_recover;//实际开支
 
-        $debit->project_id = $this->request->project_Id;
+        $bill->project_id = $this->request->project_Id;
 
-        $debit->name = $this->request->name;
+        $bill->name = $this->request->name;
 
-        $debit->amount = $this->request->amount;
+        $bill->amount = $this->request->amount;
 
-        $debit->handle_id = $this->request->handle_Id;
+        $bill->handle_id = $this->request->handle_Id;
 
-        $debit->price = $this->request->price;
+        $bill->price = $this->request->price;
 
-        $debit->cash_disburse = $this->request->cash_disburse;
+        $bill->cash_disburse = $this->request->cash_disburse;
 
-        $debit->cash_recover = $this->request->cash_recover;
+        $bill->cash_recover = $this->request->cash_recover;
 
-        $debit->oil_disburse = $this->request->oil_disburse;
+        $bill->oil_disburse = $this->request->oil_disburse;
 
-        $debit->oil_recover = $this->request->oil_recover;
+        $bill->oil_recover = $this->request->oil_recover;
 
-        $debit->actual_disburse = $actual_disburse;
+        $bill->actual_disburse = $actual_disburse;
 
-        $debit->remaining = $this->request->price - $actual_disburse;
+        $bill->remaining = $this->request->price - $actual_disburse;
 
-        $debit->note = $this->request->note;
+        $bill->customize_time = strtotime($this->request->customize_time);
 
-        $debit->save();
+        $bill->note = $this->request->note;
+
+        $bill->save();
 
         return redirect()->back()->with('status', [
             'code'=>'success',

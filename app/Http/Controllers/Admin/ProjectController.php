@@ -55,8 +55,8 @@ class ProjectController extends AdminController
     {
         $query = $project->query();
 
-        if ($this->request->name) {
-            $query->where('project_name', 'like', '%' . $this->request->name . '%');
+        if ($this->request->keyword) {
+            $query->where('project_name', 'like', '%' . $this->request->keyword . '%');
         }
         $projecteds = $query->orderBy('created_at', 'desc')->paginate(100);
 

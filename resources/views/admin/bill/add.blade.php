@@ -73,31 +73,31 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-2">运价：</label>
                                 <div class="col-lg-3">
-                                    <input type="text" class="form-control input-sm" value="{{ old('price',$bill->price) }}" name="price" placeholder="请填写运价">
+                                    <input type="text" class="form-control input-sm" @if($bill->id) value="{{ old('price',$bill->price) }}" @elseif($bill) value="0" @endif  name="price" placeholder="请填写运价">
                                 </div><!-- /.col -->
                             </div><!-- /form-group -->
                             <div class="form-group">
                                 <label class="control-label col-lg-2">现金支出：</label>
                                 <div class="col-lg-3">
-                                    <input type="text" class="form-control input-sm" value="{{ old('cash_disburse',$bill->cash_disburse) }}" name="cash_disburse" placeholder="请填写现金支出">
+                                    <input type="text" class="form-control input-sm" @if($bill->id) value="{{ old('cash_disburse',$bill->cash_disburse) }}" @elseif($bill) value="0" @endif name="cash_disburse" placeholder="请填写现金支出">
                                 </div><!-- /.col -->
                             </div><!-- /form-group -->
                             <div class="form-group">
                                 <label class="control-label col-lg-2">现金回收：</label>
                                 <div class="col-lg-3">
-                                    <input type="text" class="form-control input-sm" value="{{ old('cash_recover',$bill->cash_recover) }}" name="cash_recover" placeholder="请填写现金回收">
+                                    <input type="text" class="form-control input-sm" @if($bill->id) value="{{ old('cash_recover',$bill->cash_recover) }}" @elseif($bill) value="0" @endif  name="cash_recover" placeholder="请填写现金回收">
                                 </div><!-- /.col -->
                             </div><!-- /form-group -->
                             <div class="form-group">
                                 <label class="control-label col-lg-2">油卡支出：</label>
                                 <div class="col-lg-3">
-                                    <input type="text" class="form-control input-sm" value="{{ old('oil_disburse',$bill->oil_disburse) }}" name="oil_disburse" placeholder="请填写油卡支出">
+                                    <input type="text" class="form-control input-sm"  @if($bill->id)value="{{ old('oil_disburse',$bill->oil_disburse) }}" @elseif($bill) value="0" @endif name="oil_disburse" placeholder="请填写油卡支出">
                                 </div><!-- /.col -->
                             </div><!-- /form-group -->
                             <div class="form-group">
                                 <label class="control-label col-lg-2">油卡回收：</label>
                                 <div class="col-lg-3">
-                                    <input type="text" class="form-control input-sm" value="{{ old('oil_recover',$bill->oil_recover) }}" name="oil_recover" placeholder="请填写油卡回收">
+                                    <input type="text" class="form-control input-sm" @if($bill->id)value="{{ old('oil_recover',$bill->oil_recover) }}" @elseif($bill) value="0" @endif  name="oil_recover" placeholder="请填写油卡回收">
                                 </div><!-- /.col -->
                             </div><!-- /form-group -->
                             <div class="form-group">

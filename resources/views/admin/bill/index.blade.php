@@ -26,7 +26,7 @@
 									您好 <strong class="text-danger">管理员</strong>，这里是 <strong class="text-danger">账单统计信息列表</strong> 的数据概况！
 								</div>
 								<div class="smart-widget-inner padding-md clearfix">
-									<div class="col-lg-2 col-sm-6 paddingLR-sm">
+									<div class="col-lg-3 col-sm-6 paddingLR-sm">
 										<div class="statistic-box bg-success m-bottom-md">
 											<div class="statistic_text">
 												<p><strong>{{ $count['countDisburses'] }}</strong>元</p>
@@ -37,7 +37,7 @@
 											</div>
 										</div>
 									</div><!--col-lg-3-->
-									<div class="col-lg-2 col-sm-6 paddingLR-sm">
+									<div class="col-lg-3 col-sm-6 paddingLR-sm">
 										<div class="statistic-box bg-info m-bottom-md">
 											<div class="statistic_text">
 												<p><strong>{{ $count['countRecover'] }}</strong>元</p>
@@ -48,7 +48,7 @@
 											</div>
 										</div>
 									</div><!--col-lg-3-->
-									<div class="col-lg-2 col-sm-6 paddingLR-sm">
+									<div class="col-lg-3 col-sm-6 paddingLR-sm">
 										<div class="statistic-box bg-warning m-bottom-md">
 											<div class="statistic_text">
 												<p><strong>{{ $count['oil_disburse'] }}</strong>元</p>
@@ -59,7 +59,7 @@
 											</div>
 										</div>
 									</div><!--col-lg-3-->
-									<div class="col-lg-2 col-sm-6 paddingLR-sm">
+									<div class="col-lg-3 col-sm-6 paddingLR-sm">
 										<div class="statistic-box bg-primary m-bottom-md">
 											<div class="statistic_text">
 												<p><strong>{{ $count['oil_recover'] }}</strong>元</p>
@@ -109,7 +109,6 @@
 					<table class="table table-striped ccad_table">
 						<thead>
 							<tr>
-								<th>会员名</th>
 								<th>项目名</th>
 								<th>品名</th>
 								<th>数量</th>
@@ -123,6 +122,7 @@
 								<th>剩余</th>
 								<th>备注</th>
 								<th>创建时间</th>
+								<th>会员名</th>
 								<th>操作</th>
 
 							</tr>
@@ -130,7 +130,6 @@
 						<tbody>
 						@foreach($bills as $bill)
 							<tr>
-								<td>{{ $bill->user ? $bill->user->name : '会员已删除' }}</td>
 								<td>{{ $bill->project->project_name }}</td>
 								<td>{{ $bill->name }}</td>
 								<td class="text-danger">{{ $bill->amount }}</td>
@@ -144,6 +143,7 @@
 								<td>{{ $bill->remaining }}</td>
 								<td>{{ $bill->note ? $bill->note : '无'  }}</td>
 								<td>{{ date("Y/m/d", $bill->customize_time) }}</td>
+								<td>{{ $bill->user ? $bill->user->name : '未知' }}</td>
 								<td class="nscs-table-handle">
 									<span><a href="{{ url('admin/bill/edit',['id'=>$bill->id]) }}" class="btn-blue"><i class="fa fa-edit"></i><p>编辑</p></a></span>
 									<span><a onclick="return confirm('您确认删除吗？')" href="{{ url('admin/bill/delete',['id'=>$bill->id]) }}" nctype="btn_del_account" data-seller-id="1" class="btn-red"><i class="fa fa-trash-o"></i><p>删除</p></a></span>
