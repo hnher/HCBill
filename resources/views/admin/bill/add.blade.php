@@ -103,7 +103,7 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-2">创建时间：</label>
                                 <div class="col-lg-3">
-                                    <input type="text" name="customize_time" id="from01" @if($bill->id)value="{{ old('customize_time', date("Y/m/d", $bill->customize_time)) }}" @endif class="form-control ccdates" placeholder="创建时间">
+                                    <input type="text" name="customize_time" id="from01" @if($bill->id)value="{{ old('customize_time', date("Y/m/d", $bill->customize_time)) }}" @else value="{{ date("Y/m/d", time()) }}" @endif class="form-control ccdates" placeholder="创建时间">
                                 </div><!-- /.col -->
                             </div><!-- /form-group -->
                             <div class="form-group">
