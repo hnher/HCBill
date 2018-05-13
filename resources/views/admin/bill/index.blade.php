@@ -131,7 +131,7 @@
 						<tbody>
 						@foreach($bills as $bill)
 							<tr>
-								<td>{{ $bill->no ? $bill->no : '暂无' }}</td>
+
 								<td>{{ $bill->project->project_name }}</td>
 								<td>{{ $bill->name }}</td>
 								<td class="text-danger">{{ $bill->amount }}</td>
