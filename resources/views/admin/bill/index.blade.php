@@ -144,7 +144,7 @@
 								<td>{{ $bill->actual_disburse }}</td>
 								<td>{{ $bill->remaining }}</td>
 								<td>{{ $bill->note ? $bill->note : '无'  }}</td>
-								<td>{{ $bill->customize_time ? date("Y/m/d", $bill->customize_time) : $bill->created_at }}</td>
+								<td>{{ $bill->customize_time ? date("Y/m/d", $bill->customize_time) : '未填写' }}</td>
 								<td>{{ $bill->user ? $bill->user->name : '未知' }}</td>
 								<td class="nscs-table-handle">
 									<span><a href="{{ url('admin/bill/edit',['id'=>$bill->id]) }}" class="btn-blue"><i class="fa fa-edit"></i><p>编辑</p></a></span>
