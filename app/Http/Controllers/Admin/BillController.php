@@ -59,6 +59,8 @@ class BillController extends AdminController
                 $query->orWhere('name', 'like', '%' . $request->keyword . '%');
 
                 $query->orWhere('note', 'like', '%' . $request->keyword . '%');
+
+                $query->orWhere('no', 'like', '%'.$request->keyword.'%');
             });
         }
 
@@ -153,6 +155,11 @@ class BillController extends AdminController
         $bill->customize_time = strtotime($this->request->customize_time);
 
         $bill->note = $this->request->note;
+
+        if($this->request->no)
+        {
+            $bill->no = $this->request->no;
+        }
 
         $bill->save();
 
