@@ -108,9 +108,9 @@
                             </div><!-- /form-group -->
 
                             <div class="form-group">
-                                <label class="control-label col-lg-2">创建时间：</label>
+                                <label class="control-label col-lg-2">回单编号：</label>
                                 <div class="col-lg-3">
-                                    <input type="text" name="no" id="from01" @if($bill->id)value="{{ old('no', date("Y/m/d", $bill->no)) }}" @endif class="form-control ccdates" placeholder="回单编号">
+                                    <input type="text" name="no" id="from01" @if($bill->id)value="{{ old('no') }}" @endif class="form-control ccdates" placeholder="回单编号">
                                 </div><!-- /.col -->
                             </div><!-- /form-group -->
 
