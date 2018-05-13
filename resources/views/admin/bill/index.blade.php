@@ -79,7 +79,7 @@
                   <div class="breadcrumb ccsearch">
 					  <form action="{{ url('admin/bill') }}" method="get">
 
-						  <input type="text" class="form-control" value="@if(isset($_GET['keyword'])){{ $_GET['keyword'] }}@endif" name="keyword" placeholder="项目名/品名/经手人/备注/关键词查询">
+						  <input type="text" class="form-control input-sm"  value="@if(isset($_GET['keyword'])){{ $_GET['keyword'] }}@endif" name="keyword" placeholder="项目名/品名/经手人/备注/关键词查询">
 
 						  <select class="form-control ccdates" name="handle_name">
 							  <option value="0" >全部经手人</option>
