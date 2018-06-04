@@ -72,8 +72,6 @@ class BillController extends AdminController
 
             $billId = $query->pluck('id')->toArray();
 
-            dd($billId);
-
             $billId = $this->export($billId);
 
             return $billId;

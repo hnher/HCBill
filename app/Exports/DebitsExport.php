@@ -44,6 +44,7 @@ class DebitsExport implements WithHeadings, WithMapping, FromQuery
     public function map($billId): array
     {
         return [
+            $billId->no? $billId->no : '暂无',
             $billId->user ? $billId->user->name : '未知',
             $billId->project->project_name,
             $billId->name,
@@ -63,6 +64,7 @@ class DebitsExport implements WithHeadings, WithMapping, FromQuery
     public function headings(): array
     {
         return [
+            '回单编号',
             '会员名',
             '项目名',
             '品名',
