@@ -156,10 +156,8 @@ class BillController extends AdminController
 
         $bill->note = $this->request->note;
 
-        if($this->request->no)
-        {
-            $bill->no = $this->request->no;
-        }
+        $bill->no = $this->request->no;
+
 
         $bill->save();
 
