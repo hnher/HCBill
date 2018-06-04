@@ -110,7 +110,7 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-2">回单编号：</label>
                                 <div class="col-lg-3">
-                                    <input type="text" name="no" id="from01" @if($bill->id)value="{{ old('no') }}" @endif class="form-control ccdates" placeholder="回单编号">
+                                    <input type="text" name="no" id="from01" @if($bill->id) @if($bill->no) value="{{ $bill->no }}" @endif @else value="{{ old('no') }}" @endif class="form-control ccdates" placeholder="回单编号">
                                 </div><!-- /.col -->
                             </div><!-- /form-group -->
 
